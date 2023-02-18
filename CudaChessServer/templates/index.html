@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Synchronized Slider</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js"></script>
+      <script src="/static/main.js"></script>
+   </head>
+   <body>
+      <div style="display: none;">
+         <img id="black-king" src="/static/pieces/Black King.png"/>
+         <img id="black-queen" src="/static/pieces/Black Queen.png"/>
+         <img id="black-rook" src="/static/pieces/Black Rook.png"/>
+         <img id="black-bishop" src="/static/pieces/Black Bishop.png"/>
+         <img id="black-knight" src="/static/pieces/Black Knight.png"/>
+         <img id="black-pawn" src="/static/pieces/Black Pawn.png"/>
+         <img id="white-king" src="/static/pieces/White King.png"/>
+         <img id="white-queen" src="/static/pieces/White Queen.png"/>
+         <img id="white-rook" src="/static/pieces/White Rook.png"/>
+         <img id="white-bishop" src="/static/pieces/White Bishop.png"/>
+         <img id="white-knight" src="/static/pieces/White Knight.png"/>
+         <img id="white-pawn" src="/static/pieces/White Pawn.png"/>
+      </div>
+      <div class="container text-center">
+         <canvas id="chess_canvas" width="600" height="600" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.
+         </canvas>
+         <p id="text"></p>
+      </div>
+   </body>
+</html>
