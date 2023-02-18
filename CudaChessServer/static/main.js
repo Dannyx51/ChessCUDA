@@ -108,12 +108,12 @@ class ChessBoard {
         this.drawPieceFloating(this.array[this.selectedY][this.selectedX], ax - this.scale / 2, ay - this.scale / 2);
     }
 
-    unselectPoint() {
+    unselectPoint(ax, ay) {
         var x = this.selectedX, y = this.selectedY;
 
         board.selectedX = -1;
         board.selectedY = -1;
-        
+
         this.drawArray();
     }
 
@@ -153,7 +153,7 @@ class ChessBoard {
         board.isMouseDown = false;
         var x = e.offsetX, y = e.offsetY;
         
-        board.unselectPoint();
+        board.unselectPoint(x, y);
 
         sounds.capture();
     }
