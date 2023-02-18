@@ -118,7 +118,7 @@ class ChessBoard {
     }
 
     drawBoardAtPoint(x, y, highlight = false){
-        this.ctx.fillStyle = ((x + y) % 2 == 0) ? ((!highlight) ? "#996633" : "#bbbbbb") : ((!highlight) ? "#bb8844" : "#bbbbbb");
+        this.ctx.fillStyle = ((x + y) % 2 == 0) ? ((!highlight) ? "#996633" : "#bbbb99") : ((!highlight) ? "#bb8844" : "#bbbb99");
         this.ctx.fillRect(x * this.scale, (7 - y) * this.scale, this.scale, this.scale);
     }
 
