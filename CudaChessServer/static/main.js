@@ -110,11 +110,11 @@ class ChessBoard {
 
     unselectPoint() {
         var x = this.selectedX, y = this.selectedY;
-        this.drawBoardAtPoint(x, y);
-        this.drawPiece(this.array[y][x], x, y);
 
         board.selectedX = -1;
         board.selectedY = -1;
+        
+        this.drawArray();
     }
 
     drawBoardAtPoint(x, y, highlight = false){
