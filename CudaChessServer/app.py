@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 socketio = SocketIO(app)
 
-values = {}
+values = {"board": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR_w_KQkq_-_0_1"}
 
 @app.route('/')
 def index():

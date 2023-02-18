@@ -15,6 +15,7 @@
 #include <Poco/Net/HTTPMessage.h>
 
 void sendFEN(ChessBoard board);
+void sendMoves(ChessBoard board);
 
 int main()
 {
@@ -58,4 +59,11 @@ void sendFEN(ChessBoard board) {
     std::cout << "HTTP Status: " << response.getStatus() << "\n";
     
     session.setKeepAlive(false);
+}
+
+void sendMoves(ChessBoard board) {
+    std::string url = "https://localhost:5000";
+
+    Poco::URI uri(url);
+    Poco::Net::HTTPClientSession session(uri.getHost(), uri.getPort());
 }
