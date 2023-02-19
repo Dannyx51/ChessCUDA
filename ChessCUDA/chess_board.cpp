@@ -232,6 +232,14 @@ std::vector<Move> ChessBoard::getMoves(int ind) {
 }
 
 
+
+
+void ChessBoard::makeMove(Move move) {
+	board[move.end] = board[move.start];
+	board[move.start] = NONE;
+}
+
+
 uint8_t ChessBoard::getLoc(int x, int y) {
 	if (x < 0 || x > 7) return -1;
 	if (y < 0 || y > 7) return -1;
@@ -381,8 +389,28 @@ std::ostream& operator<<(std::ostream& os, ChessBoard const& board) {
 }
 
 /// MOVE FUNCTIONS ///
-std::ostream& operator<<(std::ostream& os, Move const& move) {
-	os << std::string(1, (char)(move.end % 8) + 'a') + std::to_string(move.end / 8 + 1);
+Move::Move(std::string move) {
+	if(move.length() != 5){
+		start = -1;
+		end = -1;
+	}else{
+		start = move[0] - 'a' + (move[1] - '1') * 8;
+		end = move[3] - 'a' + (move[4] - '1') * 8;
+	}
+}
 
+bool Move::isValid() {
+	return start >= 0 && end >= 0 && start < 64 && end < 64;
+}
+
+std::string Move::to_string(bool e) {
+	if (e) {
+		return std::string(1, (char)(end % 8) + 'a') + std::to_string(end / 8 + 1);
+	}
+	return std::string(1, (char)(start % 8) + 'a') + std::to_string(start / 8 + 1);
+}
+
+std::ostream& operator<<(std::ostream& os, Move const& move) {
+	os << std::string(1, (char)(move.start % 8) + 'a') << std::to_string(move.start / 8 + 1) << "-" << std::string(1, (char)(move.end % 8) + 'a') << std::to_string(move.end / 8 + 1);
 	return os;
 }

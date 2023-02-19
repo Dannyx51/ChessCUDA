@@ -25,7 +25,13 @@ enum Piece {
 struct Move {
     int start, end;
 
+    bool isValid();
+
     friend std::ostream& operator<<(std::ostream& os, Move const& move);
+    std::string to_string(bool e);
+    
+    Move(int s, int e) : start(s), end(e) {};
+    Move(std::string move);
 };
 
 class ChessBoard {
@@ -53,6 +59,7 @@ public:
 
     /// Board Navigation ///
     std::vector<Move> getMoves(int ind);
+    void makeMove(Move move);
     
     /// Helper Methods ///
     std::string toFEN();

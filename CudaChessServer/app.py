@@ -11,25 +11,25 @@ values = {"board": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR_w_KQkq_-_0_1"}
 def index():
     return render_template('index.html')
 
-@app.route('/board/<path:data>')
-def board(data):
-    values['board'] = data
-    socketio.emit('update board', data)
+@app.route('/set/<id>/<path:data>')
+def setValue(id, data):
+    values[id] = data
+    socketio.emit(f'update {id}', data)
     return "data sent"
 
-@app.route('/get/<path>')
-def get(data):
-    if data in values: return data[values]
-    return "null value"
+@app.route('/get/<id>')
+def getValue(id):
+    if id in values: return values[id]
+    return "" # Default value
 
 @socketio.on('connect')
 def socker_connect():
-    if 'board' in values:
-        emit('update board', values['board'])
+    for id in values:
+        emit(f'update {id}', values[id])
 
-@socketio.on('update move')
+@socketio.on('set')
 def socket_update_move(message):
-    values[message['path']] = message['value']
+    values[message['id']] = message['data']
     print(values)
 
 if __name__ == '__main__':
